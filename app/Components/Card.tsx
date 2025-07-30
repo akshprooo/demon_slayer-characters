@@ -1,9 +1,19 @@
+// Card.tsx
 "use client"
 
 import React from 'react'
 import Image from 'next/image'
 
-const Card = ({ character }) => {
+// Define type for the character prop
+interface Character {
+  id: string | number;
+  name: string;
+  age?: string;
+  race?: string;
+  img: string;
+}
+
+const Card = ({ character }: { character: Character }) => {
   return (
     <div className="w-64 sm:w-56 bg-white dark:bg-zinc-900 rounded-xl p-4 shadow-md flex flex-col items-center gap-3 transition-transform duration-200 hover:scale-105">
       <div className="relative w-40 h-56">
