@@ -1,10 +1,8 @@
-// Card.tsx
-"use client"
+"use client";
 
-import React from 'react'
-import Image from 'next/image'
+import React from 'react';
+import Image from 'next/image';
 
-// Define type for the character prop
 interface Character {
   id: string | number;
   name: string;
@@ -26,7 +24,7 @@ const Card = ({ character }: { character: Character }) => {
         View More
       </a>
     </div>
-  )
-}
+  );
+};
 
-export default Card
+export default Card;

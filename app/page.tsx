@@ -3,9 +3,17 @@
 import React, { useEffect, useState } from 'react';
 import Card from './Components/Card';
 
+interface Character {
+  id: string | number;
+  name: string;
+  age?: string;
+  race?: string;
+  img: string;
+}
+
 const App = () => {
-  const [data, setData] = useState([]);
-  const [filtered, setFiltered] = useState([]);
+  const [data, setData] = useState<Character[]>([]);
+  const [filtered, setFiltered] = useState<Character[]>([]);
   const [search, setSearch] = useState('');
 
   const fetchData = async () => {
@@ -20,10 +28,10 @@ const App = () => {
     }
   };
 
-  const handleSearch = (query) => {
+  const handleSearch = (query: string) => {
     setSearch(query);
     const lower = query.toLowerCase();
-    const results = data.filter(character =>
+    const results = data.filter((character: Character) =>
       character.name.toLowerCase().includes(lower)
     );
     setFiltered(results);
@@ -36,7 +44,6 @@ const App = () => {
   return (
     <div className="min-h-screen bg-zinc-100 dark:bg-zinc-900 text-zinc-800 dark:text-zinc-100 px-6 py-10">
       <h1 className="text-4xl font-bold text-center mb-8">Demon Slayer Characters</h1>
-
       <div className="max-w-xl mx-auto mb-6">
         <input
           type="text"
@@ -46,7 +53,6 @@ const App = () => {
           className="w-full px-4 py-3 rounded-lg border border-zinc-300 dark:border-zinc-700 bg-white dark:bg-zinc-800 text-zinc-900 dark:text-zinc-100 focus:outline-none focus:ring-2 focus:ring-indigo-500 transition"
         />
       </div>
-
       <div className="flex flex-wrap justify-center gap-4 p-4">
         {filtered.length > 0 ? (
           filtered.map((character, idx) => (
